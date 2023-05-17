@@ -27,33 +27,14 @@ public class Main {
         System.out.println("Voer het tegenwind van vandaag (in km/uur) ");
         int tegenwind = scanner.nextInt();
 
-        if(toestemming == true && (lading < 1000 || tegenwind > 50)){
-            System.out.println("uw voertuig mag wel opstijgen van schiphol");
+        boolean input = Vliegtuig.controleertoestemming(toestemming,lading,tegenwind);
+        if(input == true){
+            System.out.println("uw voertuig mag opstijgen van schiphol");
         } else {
-            System.out.println("uw vortuig mag niet opstijgen van schiphol");
+            System.out.println("uw voertuig mag niet opstijgen van schiphol");
         }
-
-            // Bereken de landingsprijs
-            double prijs = 0;
-            if (gewicht < 1000) {
-                prijs = 100;
-            } else if (gewicht >= 1000 && gewicht < 5000) {
-                prijs = 500;
-            } else {
-                prijs = 2500;
-            }
-
-            if (aant_pas > 2) {
-                prijs *= 1.5;
-            }
-
-            if (afhandeld) {
-                prijs += 800;
-            }
-
-        if (nationaliteit.equalsIgnoreCase("Nederlands")) {
-            prijs *= 1.21;
-        }
+        // Bereken de landingsprijs
+        double prijs = Vliegtuig.berekenlandingsprijs(gewicht,aant_pas,afhandeld,nationaliteit);
 
             // Toon het resultaat
         System.out.printf("Het landen op schiphol met uw voertuig kost %.2f €%n",prijs);
