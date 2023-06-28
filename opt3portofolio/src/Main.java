@@ -34,10 +34,11 @@ public class Main {
             System.out.println("uw voertuig mag niet opstijgen van schiphol");
         }
         // Bereken de landingsprijs
-        double prijs = Vliegtuig.berekenlandingsprijs(gewicht,aant_pas,afhandeld,nationaliteit);
+        double prijs = Vliegtuig.berekenlandingsprijs(gewicht);
+        double prijsmetextra = Vliegtuig.berekenextrakosten(prijs,aant_pas,afhandeld,nationaliteit);
 
             // Toon het resultaat
-        System.out.printf("Het landen op schiphol met uw voertuig kost %.2f €%n",prijs);
+        System.out.printf("Het landen op schiphol met uw voertuig kost %.2f €%n",prijsmetextra);
         }
 
 
